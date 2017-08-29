@@ -1,0 +1,23 @@
+{
+  "name": "tng27",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-client": "^1.9.1",
+    "fastify": "^0.26.1",
+    "fastify-helmet": "^1.0.1",
+    "graphql-tag": "^2.4.2",
+    "handlebars": "^4.0.10",
+    "node-fetch": "^1.7.2",
+    "pino": "^4.7.1",
+    "point-of-view": "^0.2.2"
+  }
+}
