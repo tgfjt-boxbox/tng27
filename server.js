@@ -10,7 +10,6 @@ const createNetworkInterface = require('apollo-client').createNetworkInterface
 global.fetch = fetch
 
 const client = new ApolloClient({
-  ssrMode: true,
   networkInterface: createNetworkInterface({
     uri: 'https://api.graphcms.com/simple/v1/tng27',
     opts: {
@@ -51,11 +50,15 @@ fastify.get('/', (req, reply) => {
     .catch(error => console.error(error))
 })
 
-if (require.main === module) {
+function start() {
   fastify.listen(process.env.PORT || 3456, err => {
     if (err) throw err
     console.log(`server listening on ${fastify.server.address().port}`)
   })
+}
+
+if (require.main === module) {
+  start()
 }
 
 module.exports = { start, fastify }
