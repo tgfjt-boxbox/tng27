@@ -4,11 +4,10 @@ const helmet = require('fastify-helmet')
 const fetch = require('node-fetch')
 const hbs = require('handlebars')
 const gql = require('graphql-tag')
-
-global.fetch = fetch
-
 const ApolloClient = require('apollo-client').default
 const createNetworkInterface = require('apollo-client').createNetworkInterface
+
+global.fetch = fetch
 
 const client = new ApolloClient({
   ssrMode: true,
@@ -27,9 +26,7 @@ const appName = 'tng27'
 
 fastify.register(helmet)
 fastify.register(require('point-of-view'), {
-  engine: {
-    handlebars: hbs
-  },
+  engine: { handlebars: hbs },
   templates: './app/views'
 })
 
@@ -54,15 +51,11 @@ fastify.get('/', (req, reply) => {
     .catch(error => console.error(error))
 })
 
-function start () {
+if (require.main === module) {
   fastify.listen(process.env.PORT || 3456, err => {
     if (err) throw err
     console.log(`server listening on ${fastify.server.address().port}`)
   })
-}
-
-if (require.main === module) {
-  start()
 }
 
 module.exports = { start, fastify }
